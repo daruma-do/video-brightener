@@ -52,7 +52,7 @@ GPU合成パスで処理されるため、4K60fps動画でも処理負荷はほ�
 動画フレームをcanvasに描画しないため、Widevine等のDRMでも動作します。
 
 ■ お問い合わせ
-不具合・要望は tanakay.code@gmail.com まで
+不具合・要望は darumado.inc@gmail.com まで
 ```
 
 ## 権限の正当化文（Privacy practices タブ）

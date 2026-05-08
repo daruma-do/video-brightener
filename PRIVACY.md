@@ -49,4 +49,4 @@ Video Brightener（以下「本拡張」）は、対応サイトで再生され�
 本ポリシーまたは本拡張に関するお問い合わせ:
 
 - GitHub Issues: https://github.com/daruma-do/video-brightener/issues
-- Email: tanakay.code@gmail.com
+- Email: darumado.inc@gmail.com
