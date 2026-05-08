@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "AutoLift - 動画の暗いシーンを明るく",
   "short_name": "AutoLift",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "YouTube・U-NEXT・ABEMAなどの動画で暗くて見えにくいシーンを明るく補正します。フルスクリーンでも動作。",
   "host_permissions": [
     "https://www.youtube.com/*",

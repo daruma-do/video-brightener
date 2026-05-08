@@ -4,7 +4,7 @@
   const SVG_NS = 'http://www.w3.org/2000/svg';
   const PREV_FILTER_ATTR = 'data-autolift-prev-filter';
 
-  let settings = { enabled: true, exponent: 0.55 };
+  let settings = { enabled: true, exponent: 0.65, contrast: 1.10 };
 
   function ensureFilter() {
     if (document.getElementById(SVG_ID)) return;
@@ -18,26 +18,48 @@
     filter.id = FILTER_ID;
     filter.setAttribute('color-interpolation-filters', 'sRGB');
 
-    const transfer = document.createElementNS(SVG_NS, 'feComponentTransfer');
+    // Pass 1: gamma lift (brighten shadows)
+    const gammaXfer = document.createElementNS(SVG_NS, 'feComponentTransfer');
+    gammaXfer.setAttribute('result', 'gamma');
     ['feFuncR', 'feFuncG', 'feFuncB'].forEach(tag => {
       const fn = document.createElementNS(SVG_NS, tag);
       fn.setAttribute('type', 'gamma');
       fn.setAttribute('amplitude', '1');
       fn.setAttribute('exponent', String(settings.exponent));
       fn.setAttribute('offset', '0');
-      transfer.appendChild(fn);
+      gammaXfer.appendChild(fn);
     });
+    filter.appendChild(gammaXfer);
 
-    filter.appendChild(transfer);
+    // Pass 2: linear contrast (output = slope * input + intercept, pivot at 0.5)
+    const contrastXfer = document.createElementNS(SVG_NS, 'feComponentTransfer');
+    contrastXfer.setAttribute('in', 'gamma');
+    const intercept = 0.5 * (1 - settings.contrast);
+    ['feFuncR', 'feFuncG', 'feFuncB'].forEach(tag => {
+      const fn = document.createElementNS(SVG_NS, tag);
+      fn.setAttribute('type', 'linear');
+      fn.setAttribute('slope', String(settings.contrast));
+      fn.setAttribute('intercept', String(intercept));
+      contrastXfer.appendChild(fn);
+    });
+    filter.appendChild(contrastXfer);
+
     svg.appendChild(filter);
     (document.body || document.documentElement).appendChild(svg);
   }
 
-  function syncFilterExponent() {
+  function syncFilterValues() {
     const filter = document.getElementById(FILTER_ID);
     if (!filter) return;
-    filter.querySelectorAll('feFuncR, feFuncG, feFuncB').forEach(fn => {
+    const transfers = filter.querySelectorAll('feComponentTransfer');
+    if (transfers.length < 2) return;
+    transfers[0].querySelectorAll('feFuncR, feFuncG, feFuncB').forEach(fn => {
       fn.setAttribute('exponent', String(settings.exponent));
+    });
+    const intercept = 0.5 * (1 - settings.contrast);
+    transfers[1].querySelectorAll('feFuncR, feFuncG, feFuncB').forEach(fn => {
+      fn.setAttribute('slope', String(settings.contrast));
+      fn.setAttribute('intercept', String(intercept));
     });
   }
 
@@ -82,7 +104,8 @@
     try {
       settings = await chrome.storage.sync.get({
         enabled: true,
-        exponent: 0.55
+        exponent: 0.65,
+        contrast: 1.10
       });
     } catch (_) {
       // Use defaults if storage unavailable
@@ -91,11 +114,17 @@
 
   chrome.storage.onChanged.addListener((changes, area) => {
     if (area !== 'sync') return;
+    let needSync = false;
     if (changes.enabled) settings.enabled = changes.enabled.newValue;
     if (changes.exponent) {
       settings.exponent = changes.exponent.newValue;
-      syncFilterExponent();
+      needSync = true;
     }
+    if (changes.contrast) {
+      settings.contrast = changes.contrast.newValue;
+      needSync = true;
+    }
+    if (needSync) syncFilterValues();
     applyToVideos();
   });
 
