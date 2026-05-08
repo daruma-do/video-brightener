@@ -15,7 +15,7 @@ Chrome Web Store提出時には**Webにアクセス可能なプライバシー�
 
 - **GitHub Pages（推奨・無料）**: リポジトリを公開して `PRIVACY.md` のRaw URLを使用、または `gh-pages` ブランチで静的ホスト
 - **Notion / Google Site の公開ページ**
-- **既存サイト（GachaSpotドメイン等）に `/autolift-privacy` ページを追加**
+- **既存サイト（GachaSpotドメイン等）に `/video-brightener-privacy` ページを追加**
 
 `PRIVACY.md` の連絡先セクションをURL公開前に必ず埋めてください。
 
@@ -71,11 +71,11 @@ Chrome Web Store提出時には**Webにアクセス可能なプライバシー�
 ## zipパッケージ作成
 
 ```bash
-cd /home/tamag/development/autolift
+cd /home/tamag/development/video-brightener
 python3 scripts/package.py
 ```
 
-`manifest.json`の`version`を読んで`autolift-v{version}.zip`を生成する。
+`manifest.json`の`version`を読んで`video-brightener-v{version}.zip`を生成する。
 
 zipに含まれるべきファイル:
 - `manifest.json`

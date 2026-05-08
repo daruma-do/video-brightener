@@ -1,8 +1,8 @@
 (() => {
-  const FILTER_ID = 'autolift-gamma';
-  const SVG_ID = 'autolift-svg';
+  const FILTER_ID = 'vb-gamma';
+  const SVG_ID = 'vb-svg';
   const SVG_NS = 'http://www.w3.org/2000/svg';
-  const PREV_FILTER_ATTR = 'data-autolift-prev-filter';
+  const PREV_FILTER_ATTR = 'data-vb-prev-filter';
 
   let settings = { enabled: true, exponent: 0.65, contrast: 1.10 };
 

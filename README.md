@@ -31,13 +31,13 @@ DRM保護コンテンツ（U-NEXT、ABEMAなど）でも動作する。Canvas経
 1. Chromeで `chrome://extensions/` を開く
 2. 右上の「デベロッパーモード」をON
 3. 「パッケージ化されていない拡張機能を読み込む」をクリック
-4. このリポジトリのルートディレクトリ（`autolift/`）を選択
+4. このリポジトリのルートディレクトリ（`video-brightener/`）を選択
 5. ツールバーのアイコンからON/OFF・強度調整
 
 ## ファイル構成
 
 ```
-autolift/
+video-brightener/
 ├── manifest.json          # MV3拡張機能マニフェスト
 ├── src/
 │   ├── content.js         # SVGフィルタ生成・<video>適用
