@@ -48,5 +48,4 @@ AutoLift（以下「本拡張」）は、対応サイトで再生される動画
 
 本ポリシーまたは本拡張に関するお問い合わせ:
 
-- GitHub Issues: （リポジトリ公開後に追記）
-- Email: （Chrome Web Store提出時に開発者連絡先として登録）
+- Email: tanakay.code@gmail.com
