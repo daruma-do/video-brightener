@@ -54,7 +54,7 @@ Chrome Web Store提出時には**Webにアクセス可能なプライバシー�
 
 ## アップロード手順
 
-1. `autolift-v0.1.0.zip` を作成（後述スクリプト）
+1. `video-brightener-v0.2.0.zip` を作成（後述スクリプト）
 2. Chrome Web Store デベロッパー ダッシュボードで「新しいアイテム」
 3. zipアップロード
 4. ストア掲載情報を埋める:

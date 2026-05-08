@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "AutoLift - 動画の暗いシーンを明るく",
-  "short_name": "AutoLift",
+  "name": "Video Brightener - 動画の暗いシーンを明るく",
+  "short_name": "Video Brightener",
   "version": "0.2.0",
   "description": "YouTube・U-NEXT・ABEMAなどの動画で暗くて見えにくいシーンを明るく補正します。フルスクリーンでも動作。",
   "host_permissions": [
@@ -34,7 +34,7 @@
   ],
   "action": {
     "default_popup": "src/popup.html",
-    "default_title": "AutoLift",
+    "default_title": "Video Brightener",
     "default_icon": {
       "16": "icons/icon16.png",
       "48": "icons/icon48.png",

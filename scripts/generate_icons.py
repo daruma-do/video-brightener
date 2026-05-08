@@ -1,4 +1,4 @@
-"""Generate AutoLift icons (16/48/128) using PIL.
+"""Generate Video Brightener icons (16/48/128) using PIL.
 
 Design: amber sun on dark rounded square. Rays at larger sizes,
 simple solid disc at 16px for clarity at small size.
@@ -100,9 +100,15 @@ def make_promo(width: int, height: int, sub_text: str = "動画の暗いシー�
     text_x = width * 0.36
     available_w = width - text_x - width * 0.04
 
-    title = "AutoLift"
-    title_size = int(height * 0.22)
+    title = "Video Brightener"
+    title_size = int(height * 0.20)
     title_font = ImageFont.truetype(EN_FONT, title_size)
+    while title_size > 10:
+        bbox = d.textbbox((0, 0), title, font=title_font)
+        if bbox[2] - bbox[0] <= available_w:
+            break
+        title_size -= 1
+        title_font = ImageFont.truetype(EN_FONT, title_size)
 
     sub_size = int(height * 0.085)
     sub_font = ImageFont.truetype(JP_FONT, sub_size)

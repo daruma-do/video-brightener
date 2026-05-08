@@ -21,7 +21,7 @@ INCLUDE = [
 def main() -> None:
     manifest = json.loads((ROOT / "manifest.json").read_text())
     version = manifest["version"]
-    out = ROOT / f"autolift-v{version}.zip"
+    out = ROOT / f"video-brightener-v{version}.zip"
 
     with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_DEFLATED) as z:
         for rel in INCLUDE:

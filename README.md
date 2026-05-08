@@ -1,4 +1,4 @@
-# AutoLift
+# Video Brightener
 
 動画の暗いシーンを明るく補正するChrome拡張機能。
 
