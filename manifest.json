@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "AutoLift - 動画の暗いシーンを明るく",
+  "short_name": "AutoLift",
+  "version": "0.1.0",
+  "description": "YouTube・U-NEXT・ABEMAなどの動画で暗くて見えにくいシーンを明るく補正します。フルスクリーンでも動作。",
+  "host_permissions": [
+    "https://www.youtube.com/*",
+    "https://www.youtube-nocookie.com/*",
+    "https://www.twitch.tv/*",
+    "https://*.nicovideo.jp/*",
+    "https://vimeo.com/*",
+    "https://player.vimeo.com/*",
+    "https://video.unext.jp/*",
+    "https://*.abema.tv/*"
+  ],
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.youtube-nocookie.com/*",
+        "https://www.twitch.tv/*",
+        "https://*.nicovideo.jp/*",
+        "https://vimeo.com/*",
+        "https://player.vimeo.com/*",
+        "https://video.unext.jp/*",
+        "https://*.abema.tv/*"
+      ],
+      "js": ["src/content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "AutoLift",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
