@@ -2,6 +2,8 @@
 
 動画の暗いシーンを明るく補正するChrome拡張機能。
 
+リポジトリ: https://github.com/tanakayu-ta/video-brightener
+
 YouTube・Twitch・ニコニコ・Vimeo・U-NEXT・ABEMAなどで「暗くて見えにくい」動画にガンマ補正をかけ、白飛びを抑えながら暗部だけを持ち上げる。
 
 ## 仕組み
