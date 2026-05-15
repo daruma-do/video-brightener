@@ -50,6 +50,7 @@ video-brightener/
 │   └── generate_icons.py  # アイコン・promo画像生成
 ├── PRIVACY.md             # プライバシーポリシー（公開時はWebに掲載）
 ├── PUBLISH.md             # Chrome Web Store公開チェックリスト
+├── CHANGELOG.md           # リリース履歴・審査経緯の恒久ログ
 └── README.md
 ```
 
