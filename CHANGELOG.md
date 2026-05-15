@@ -38,12 +38,17 @@
 - 対応サイトに主要VODサービスを追加: **Netflix / Disney+ / Prime Video / Hulu / Max**。
   - `content.js` はサイト固有コードを持たず全 `<video>` に汎用適用するため、`manifest.json` の
     `host_permissions` と `content_scripts.matches` への追加のみで対応。
-  - Prime Video は `primevideo.com` のみ対象。`amazon.co.jp` / `amazon.com` ドメインでの再生は、
-    Amazon全体への広範な権限を避けるため対象外とし、打ち手②「任意サイトで有効化」でカバーする方針。
+  - Prime Video: `primevideo.com` は日本では `amazon.co.jp` にリダイレクトされるため、
+    Amazon の動画セクション `https://www.amazon.co.jp/gp/video/*`・`https://www.amazon.com/gp/video/*`
+    にパス限定で対応（Amazon全体への権限は付与しない）。
+
+### 検証状況
+- ✅ **Netflix**: 実機でフィルタ動作を確認（DRM配信でのCSSフィルタ方式が機能することを実証）。
+- ✅ 多言語UI（英語表示）を確認。
+- ⏳ Disney+ / Hulu / Max: サブスク未登録のため未検証（実害なし。効かない場合もフィルタ未適用となるのみ）。
+- ⏳ Prime Video: `amazon.co.jp/gp/video/` 配下での再生URL確認が望ましい。
 
 ### 公開前の必須作業
-- 各VODサービスでの実機DRM検証（HWアクセラレーションオーバーレイ環境で `<video>` が
-  合成パスを外れ、フィルタが効かない既知制限あり。サービスごとに挙動確認）。
 - 追加 host の正当化文を Privacy practices に登録（`STORE_LISTING.md` の既存フォーマット流用、サイト名は羅列しない）。
 
 ---
