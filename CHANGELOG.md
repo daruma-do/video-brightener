@@ -8,6 +8,24 @@
 
 ---
 
+## [0.3.0] - 開発中（未公開）
+
+成長戦略フェーズ1の打ち手①（[[GROWTH_STRATEGY.md]] §3.1）。
+
+### Added
+- 対応サイトに主要VODサービスを追加: **Netflix / Disney+ / Prime Video / Hulu / Max**。
+  - `content.js` はサイト固有コードを持たず全 `<video>` に汎用適用するため、`manifest.json` の
+    `host_permissions` と `content_scripts.matches` への追加のみで対応。
+  - Prime Video は `primevideo.com` のみ対象。`amazon.co.jp` / `amazon.com` ドメインでの再生は、
+    Amazon全体への広範な権限を避けるため対象外とし、打ち手②「任意サイトで有効化」でカバーする方針。
+
+### 公開前の必須作業
+- 各VODサービスでの実機DRM検証（HWアクセラレーションオーバーレイ環境で `<video>` が
+  合成パスを外れ、フィルタが効かない既知制限あり。サービスごとに挙動確認）。
+- 追加 host の正当化文を Privacy practices に登録（`STORE_LISTING.md` の既存フォーマット流用、サイト名は羅列しない）。
+
+---
+
 ## [0.2.1] - 2026-05-13 公開（現行の公開バージョン）
 
 ### 審査経緯

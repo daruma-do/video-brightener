@@ -20,6 +20,14 @@ DRM保護コンテンツ（U-NEXT、ABEMAなど）でも動作する。Canvas経
 - Vimeo
 - U-NEXT（Widevine DRM動作確認済）
 - ABEMA（Widevine DRM動作確認済）
+- Netflix（v0.3.0で追加 / 実機検証中）
+- Disney+（v0.3.0で追加 / 実機検証中）
+- Prime Video（v0.3.0で追加 / 実機検証中）
+- Hulu（v0.3.0で追加 / 実機検証中）
+- Max（v0.3.0で追加 / 実機検証中）
+
+> Netflix 等の主要VODは v0.3.0 で host を追加。CSSフィルタ方式のため原理上 Widevine DRM 下でも動作するが、
+> 公開前に各サービスで実機検証が必要（HWアクセラレーションオーバーレイ環境では効かない既知制限あり）。
 
 ## 制限事項
 
