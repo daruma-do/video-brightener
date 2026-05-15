@@ -22,7 +22,7 @@ DRM保護コンテンツ（U-NEXT、ABEMAなど）でも動作する。Canvas経
 - ABEMA（Widevine DRM動作確認済）
 - Netflix（v0.3.0で追加 / 実機動作確認済）
 - Disney+（v0.3.0で追加 / 未検証）
-- Prime Video（v0.3.0で追加 / `amazon.co.jp/gp/video/` 配下、未検証）
+- Prime Video（v0.3.0で追加 / `amazon.co.jp`・`amazon.com` 配下、要再検証）
 - Hulu（v0.3.0で追加 / 未検証）
 - Max（v0.3.0で追加 / 未検証）
 

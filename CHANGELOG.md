@@ -38,15 +38,17 @@
 - 対応サイトに主要VODサービスを追加: **Netflix / Disney+ / Prime Video / Hulu / Max**。
   - `content.js` はサイト固有コードを持たず全 `<video>` に汎用適用するため、`manifest.json` の
     `host_permissions` と `content_scripts.matches` への追加のみで対応。
-  - Prime Video: `primevideo.com` は日本では `amazon.co.jp` にリダイレクトされるため、
-    Amazon の動画セクション `https://www.amazon.co.jp/gp/video/*`・`https://www.amazon.com/gp/video/*`
-    にパス限定で対応（Amazon全体への権限は付与しない）。
+  - Prime Video: `primevideo.com` は日本では `amazon.co.jp` にリダイレクトされる。
+    当初 `/gp/video/*` にパス限定したが、Amazonはシングルページアプリのため対象パス外から
+    SPA遷移すると content script が注入されず発動しなかった。`https://www.amazon.co.jp/*`・
+    `https://www.amazon.com/*` の host 全体に拡大（`content.js` は `<video>` 要素にのみ作用し、
+    他ページでの実害はなし）。
 
 ### 検証状況
 - ✅ **Netflix**: 実機でフィルタ動作を確認（DRM配信でのCSSフィルタ方式が機能することを実証）。
 - ✅ 多言語UI（英語表示）を確認。
 - ⏳ Disney+ / Hulu / Max: サブスク未登録のため未検証（実害なし。効かない場合もフィルタ未適用となるのみ）。
-- ⏳ Prime Video: `amazon.co.jp/gp/video/` 配下での再生URL確認が望ましい。
+- ⏳ Prime Video: `amazon.co.jp` で当初発動せず → host をAmazon全体に拡大して再対応。要再検証。
 
 ### 公開前の必須作業
 - 追加 host の正当化文を Privacy practices に登録（`STORE_LISTING.md` の既存フォーマット流用、サイト名は羅列しない）。
