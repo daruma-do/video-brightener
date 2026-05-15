@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "Video Brightener — Brighten Dark Video Scenes"
+  },
+  "extDescription": {
+    "message": "Brightens dark, hard-to-see scenes in videos. Works in fullscreen and on DRM-protected streaming, with zero external communication."
+  },
+  "popupBrightness": {
+    "message": "Brightness"
+  },
+  "popupContrast": {
+    "message": "Contrast"
+  },
+  "tickLow": {
+    "message": "Low"
+  },
+  "tickHigh": {
+    "message": "High"
+  },
+  "tickNormal": {
+    "message": "Normal"
+  },
+  "presetLow": {
+    "message": "Low"
+  },
+  "presetMedium": {
+    "message": "Medium"
+  },
+  "presetStrong": {
+    "message": "Strong"
+  },
+  "presetMax": {
+    "message": "Max"
+  },
+  "levelOff": {
+    "message": "Off"
+  },
+  "levelLow": {
+    "message": "Low"
+  },
+  "levelMedium": {
+    "message": "Medium"
+  },
+  "levelStrong": {
+    "message": "Strong"
+  },
+  "levelMax": {
+    "message": "Max"
+  },
+  "contrastNormal": {
+    "message": "Normal"
+  },
+  "toggleTitle": {
+    "message": "On / Off"
+  },
+  "footerSupported": {
+    "message": "Activates automatically on supported video sites."
+  },
+  "footerFullscreen": {
+    "message": "Works in fullscreen. Picture-in-Picture is not supported."
+  }
+}

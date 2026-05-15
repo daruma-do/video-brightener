@@ -7,6 +7,8 @@ ROOT = Path(__file__).resolve().parent.parent
 
 INCLUDE = [
     "manifest.json",
+    "_locales/en/messages.json",
+    "_locales/ja/messages.json",
     "src/content.js",
     "src/popup.html",
     "src/popup.js",

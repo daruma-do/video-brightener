@@ -1,0 +1,62 @@
+{
+  "extName": {
+    "message": "Video Brightener - 動画の暗いシーンを明るく"
+  },
+  "extDescription": {
+    "message": "動画の暗くて見えにくいシーンを明るく補正します。フルスクリーン対応、DRM配信対応、外部通信なし。"
+  },
+  "popupBrightness": {
+    "message": "明るさ"
+  },
+  "popupContrast": {
+    "message": "コントラスト"
+  },
+  "tickLow": {
+    "message": "弱"
+  },
+  "tickHigh": {
+    "message": "強"
+  },
+  "tickNormal": {
+    "message": "標準"
+  },
+  "presetLow": {
+    "message": "弱"
+  },
+  "presetMedium": {
+    "message": "中"
+  },
+  "presetStrong": {
+    "message": "強"
+  },
+  "presetMax": {
+    "message": "最強"
+  },
+  "levelOff": {
+    "message": "OFF相当"
+  },
+  "levelLow": {
+    "message": "弱"
+  },
+  "levelMedium": {
+    "message": "中"
+  },
+  "levelStrong": {
+    "message": "強"
+  },
+  "levelMax": {
+    "message": "最強"
+  },
+  "contrastNormal": {
+    "message": "標準"
+  },
+  "toggleTitle": {
+    "message": "ON / OFF"
+  },
+  "footerSupported": {
+    "message": "対応サイトで自動的に有効になります。"
+  },
+  "footerFullscreen": {
+    "message": "フルスクリーン対応・PiPは仕様上非対応"
+  }
+}

@@ -28,22 +28,38 @@ function contrastValueToSlider(c) {
   return Math.round(((cl - CONTRAST_MIN) / (CONTRAST_MAX - CONTRAST_MIN)) * 100);
 }
 
+function applyI18n() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const msg = chrome.i18n.getMessage(el.dataset.i18n);
+    if (msg) el.textContent = msg;
+  });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    const msg = chrome.i18n.getMessage(el.dataset.i18nTitle);
+    if (msg) el.title = msg;
+  });
+  document.documentElement.lang = chrome.i18n.getUILanguage();
+}
+
 function updateBrightnessLabel(exp) {
-  let label;
-  if (exp >= 0.9) label = 'OFF相当';
-  else if (exp >= 0.7) label = '弱';
-  else if (exp >= 0.55) label = '中';
-  else if (exp >= 0.4) label = '強';
-  else label = '最強';
-  brightnessLabelEl.textContent = label;
+  let key;
+  if (exp >= 0.9) key = 'levelOff';
+  else if (exp >= 0.7) key = 'levelLow';
+  else if (exp >= 0.55) key = 'levelMedium';
+  else if (exp >= 0.4) key = 'levelStrong';
+  else key = 'levelMax';
+  brightnessLabelEl.textContent = chrome.i18n.getMessage(key);
 }
 
 function updateContrastLabel(c) {
   const pct = Math.round((c - 1.0) * 100);
-  contrastLabelEl.textContent = pct === 0 ? '標準' : `+${pct}%`;
+  contrastLabelEl.textContent = pct === 0
+    ? chrome.i18n.getMessage('contrastNormal')
+    : `+${pct}%`;
 }
 
 async function init() {
+  applyI18n();
+
   const data = await chrome.storage.sync.get({
     enabled: true,
     exponent: 0.65,

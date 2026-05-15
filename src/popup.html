@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="popup.css">
@@ -8,7 +8,7 @@
   <div class="container">
     <div class="header">
       <div class="title">Video Brightener</div>
-      <label class="toggle" title="ON/OFF">
+      <label class="toggle" data-i18n-title="toggleTitle">
         <input type="checkbox" id="enabled">
         <span class="track"></span>
       </label>
@@ -16,38 +16,38 @@
 
     <div class="control-section">
       <div class="control-header">
-        <span>明るさ</span>
-        <span class="control-label" id="brightnessLabel">中</span>
+        <span data-i18n="popupBrightness">明るさ</span>
+        <span class="control-label" id="brightnessLabel"></span>
       </div>
       <input type="range" id="brightness" min="0" max="100" step="1" value="50">
       <div class="control-ticks">
-        <span>弱</span>
-        <span>強</span>
+        <span data-i18n="tickLow">弱</span>
+        <span data-i18n="tickHigh">強</span>
       </div>
     </div>
 
     <div class="control-section">
       <div class="control-header">
-        <span>コントラスト</span>
-        <span class="control-label" id="contrastLabel">+10%</span>
+        <span data-i18n="popupContrast">コントラスト</span>
+        <span class="control-label" id="contrastLabel"></span>
       </div>
       <input type="range" id="contrast" min="0" max="100" step="1" value="20">
       <div class="control-ticks">
-        <span>標準</span>
-        <span>強</span>
+        <span data-i18n="tickNormal">標準</span>
+        <span data-i18n="tickHigh">強</span>
       </div>
     </div>
 
     <div class="presets">
-      <button class="preset" data-exp="0.85" data-con="1.05">弱</button>
-      <button class="preset" data-exp="0.65" data-con="1.10">中</button>
-      <button class="preset" data-exp="0.50" data-con="1.15">強</button>
-      <button class="preset" data-exp="0.35" data-con="1.20">最強</button>
+      <button class="preset" data-exp="0.85" data-con="1.05" data-i18n="presetLow">弱</button>
+      <button class="preset" data-exp="0.65" data-con="1.10" data-i18n="presetMedium">中</button>
+      <button class="preset" data-exp="0.50" data-con="1.15" data-i18n="presetStrong">強</button>
+      <button class="preset" data-exp="0.35" data-con="1.20" data-i18n="presetMax">最強</button>
     </div>
 
     <div class="footer">
-      <div class="hint">対応: YouTube / Twitch / ニコニコ / Vimeo / U-NEXT / ABEMA</div>
-      <div class="hint subtle">フルスクリーン対応・PiPは仕様上非対応</div>
+      <div class="hint" data-i18n="footerSupported">対応サイトで自動的に有効になります。</div>
+      <div class="hint subtle" data-i18n="footerFullscreen">フルスクリーン対応・PiPは仕様上非対応</div>
     </div>
   </div>
   <script src="popup.js"></script>
