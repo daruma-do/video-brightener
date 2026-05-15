@@ -46,9 +46,9 @@
 
 ### 検証状況
 - ✅ **Netflix**: 実機でフィルタ動作を確認（DRM配信でのCSSフィルタ方式が機能することを実証）。
+- ✅ **Prime Video**: `amazon.co.jp` で実機動作を確認（host全体への拡大後）。
 - ✅ 多言語UI（英語表示）を確認。
 - ⏳ Disney+ / Hulu / Max: サブスク未登録のため未検証（実害なし。効かない場合もフィルタ未適用となるのみ）。
-- ⏳ Prime Video: `amazon.co.jp` で当初発動せず → host をAmazon全体に拡大して再対応。要再検証。
 
 ### 公開前の必須作業
 - 追加 host の正当化文を Privacy practices に登録（`STORE_LISTING.md` の既存フォーマット流用、サイト名は羅列しない）。
