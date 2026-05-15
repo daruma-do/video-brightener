@@ -51,6 +51,7 @@ video-brightener/
 ├── PRIVACY.md             # プライバシーポリシー（公開時はWebに掲載）
 ├── PUBLISH.md             # Chrome Web Store公開チェックリスト
 ├── CHANGELOG.md           # リリース履歴・審査経緯の恒久ログ
+├── GROWTH_STRATEGY.md     # 成長・収益化戦略
 └── README.md
 ```
 
