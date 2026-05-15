@@ -15,7 +15,7 @@ Video Brightener - 動画の暗いシーンを明るく
 **アクセシビリティ**（推奨）／ または ユーザー補助
 
 ## 言語
-プライマリ: **日本語**
+プライマリ: **日本語** ／ v0.4.0 で英語UIに対応（`_locales`）。CWSに英語掲載文も登録する（下記「English store listing」）。
 
 ## 詳細説明（Web Storeの説明欄にコピペ）
 ```markdown
@@ -51,6 +51,57 @@ GPU合成パスで処理されるため、4K60fps動画でも処理負荷はほ�
 ■ お問い合わせ
 不具合・要望は darumado.inc@gmail.com まで
 ```
+
+---
+
+## English store listing（CWSで言語「English」を追加して登録）
+
+### Item name
+```
+Video Brightener — Brighten Dark Video Scenes
+```
+
+### Summary (max 132 chars)
+```
+Brightens dark, hard-to-see scenes in videos. Adjustable brightness & contrast, fullscreen & DRM support, zero data collection.
+```
+
+### Description
+```
+■ The problem this solves
+- Dark scenes in gameplay streams you just can't see
+- Movie and TV scenes too dark to make out the details
+- Crushed shadows in horror-game streams — you can't tell what's happening
+- Turning up your monitor only makes everything else glaring
+
+■ What Video Brightener does
+- Uses gamma correction to lift only the dark areas
+- Built-in contrast adjustment prevents a washed-out look
+- Independent sliders for brightness and contrast
+- Four one-click presets (Low / Medium / Strong / Max)
+- Works in fullscreen, where many similar extensions fail
+- Works on DRM-protected streaming
+
+■ Privacy
+- No communication with external servers, ever
+- Never reads the pixel data of your video
+- Stores only three settings: on/off, brightness, contrast
+- No analytics, no tracking
+
+■ Limitations
+- Filters do not apply in Picture-in-Picture mode (a platform limitation)
+- On some hardware-acceleration setups the filter may not take effect
+
+■ How it works (for the technically curious)
+A two-stage SVG filter (feComponentTransfer): gamma correction plus linear contrast.
+It runs on the GPU compositing path, so even 4K60fps video adds virtually no load.
+It never draws video frames to a canvas, so it works under Widevine and other DRM.
+
+■ Contact
+Bugs and requests: darumado.inc@gmail.com
+```
+
+---
 
 ## 権限の正当化文（Privacy practices タブ）
 
