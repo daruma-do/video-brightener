@@ -3,7 +3,7 @@
   "default_locale": "en",
   "name": "__MSG_extName__",
   "short_name": "Video Brightener",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "__MSG_extDescription__",
   "host_permissions": [
     "https://www.youtube.com/*",
@@ -23,7 +23,8 @@
     "https://*.hulu.jp/*",
     "https://*.max.com/*"
   ],
-  "permissions": ["storage"],
+  "optional_host_permissions": ["https://*/*"],
+  "permissions": ["storage", "scripting", "activeTab"],
   "content_scripts": [
     {
       "matches": [

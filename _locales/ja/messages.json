@@ -58,5 +58,20 @@
   },
   "footerFullscreen": {
     "message": "フルスクリーン対応・PiPは仕様上非対応"
+  },
+  "siteBuiltin": {
+    "message": "標準で対応しています"
+  },
+  "siteEnabledState": {
+    "message": "このサイトで有効"
+  },
+  "siteEnableAction": {
+    "message": "このサイトで有効化"
+  },
+  "siteDisableAction": {
+    "message": "無効化"
+  },
+  "siteUnsupported": {
+    "message": "このページでは利用できません"
   }
 }

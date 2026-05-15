@@ -185,3 +185,51 @@ input[type="range"]::-webkit-slider-thumb:hover {
   font-size: 10px;
   opacity: 0.7;
 }
+
+.site-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.site-state {
+  font-size: 11px;
+  color: var(--subtle);
+}
+
+.site-state.on {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.site-state.muted {
+  opacity: 0.7;
+}
+
+.site-action {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--fg);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.site-action:hover {
+  background: var(--track);
+  border-color: var(--primary);
+}
+
+.site-action:active {
+  transform: scale(0.97);
+}
+
+.site-action:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -100,4 +100,115 @@ async function init() {
   });
 }
 
+// --- Per-site enablement (optional host permissions) ---------------------
+
+// Convert a Chrome match pattern (e.g. "https://*.example.com/*") to a RegExp.
+function matchPatternToRegExp(pattern) {
+  const m = /^(\*|https?):\/\/([^/]+)(\/.*)$/.exec(pattern);
+  if (!m) return null;
+  const [, scheme, host, path] = m;
+  const esc = s => s.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+  const schemePart = scheme === '*' ? 'https?' : scheme;
+  let hostPart;
+  if (host === '*') hostPart = '[^/]+';
+  else if (host.startsWith('*.')) hostPart = '(?:[^/]+\\.)?' + esc(host.slice(2));
+  else hostPart = esc(host);
+  const pathPart = esc(path).replace(/\*/g, '.*');
+  return new RegExp('^' + schemePart + '://' + hostPart + pathPart + '$');
+}
+
+// True when the URL is already covered by the bundled content_scripts.
+function isBuiltinSite(url) {
+  const cs = chrome.runtime.getManifest().content_scripts || [];
+  return cs.some(entry => (entry.matches || []).some(p => {
+    const re = matchPatternToRegExp(p);
+    return re && re.test(url);
+  }));
+}
+
+async function initSiteStatus() {
+  const stateEl = document.getElementById('siteState');
+  const actionEl = document.getElementById('siteAction');
+
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+  const url = tab && tab.url;
+
+  // Pages where no content script can run (chrome://, extension pages, http, etc.)
+  if (!url || !url.startsWith('https://')) {
+    stateEl.textContent = chrome.i18n.getMessage('siteUnsupported');
+    stateEl.className = 'site-state muted';
+    return;
+  }
+
+  // Sites covered by the bundled declaration are always on — nothing to toggle.
+  if (isBuiltinSite(url)) {
+    stateEl.textContent = chrome.i18n.getMessage('siteBuiltin');
+    stateEl.className = 'site-state on';
+    return;
+  }
+
+  const { protocol, host } = new URL(url);
+  const pattern = `${protocol}//${host}/*`;
+  const scriptId = 'vb-' + host.replace(/[^a-zA-Z0-9]/g, '-');
+  let granted = await chrome.permissions.contains({ origins: [pattern] });
+
+  function render() {
+    if (granted) {
+      stateEl.textContent = chrome.i18n.getMessage('siteEnabledState');
+      stateEl.className = 'site-state on';
+      actionEl.textContent = chrome.i18n.getMessage('siteDisableAction');
+    } else {
+      stateEl.textContent = '';
+      stateEl.className = 'site-state';
+      actionEl.textContent = chrome.i18n.getMessage('siteEnableAction');
+    }
+    actionEl.hidden = false;
+  }
+  render();
+
+  actionEl.addEventListener('click', async () => {
+    actionEl.disabled = true;
+    try {
+      if (!granted) {
+        // permissions.request must run directly in the user-gesture handler.
+        const ok = await chrome.permissions.request({ origins: [pattern] });
+        if (!ok) return;
+        granted = true;
+        // Register so the filter also applies on future page loads.
+        const existing = await chrome.scripting.getRegisteredContentScripts({ ids: [scriptId] });
+        if (existing.length === 0) {
+          await chrome.scripting.registerContentScripts([{
+            id: scriptId,
+            matches: [pattern],
+            js: ['src/content.js'],
+            runAt: 'document_idle',
+            allFrames: true,
+            persistAcrossSessions: true
+          }]);
+        }
+        // Apply immediately to the current tab without a reload.
+        try {
+          await chrome.scripting.executeScript({
+            target: { tabId: tab.id, allFrames: true },
+            files: ['src/content.js']
+          });
+        } catch (_) {
+          // Some tabs block injection; the registered script still covers reloads.
+        }
+      } else {
+        const existing = await chrome.scripting.getRegisteredContentScripts({ ids: [scriptId] });
+        if (existing.length > 0) {
+          await chrome.scripting.unregisterContentScripts({ ids: [scriptId] });
+        }
+        await chrome.permissions.remove({ origins: [pattern] });
+        granted = false;
+      }
+      render();
+    } finally {
+      actionEl.disabled = false;
+    }
+  });
+}
+
 init();
+initSiteStatus();

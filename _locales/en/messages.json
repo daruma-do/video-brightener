@@ -58,5 +58,20 @@
   },
   "footerFullscreen": {
     "message": "Works in fullscreen. Picture-in-Picture is not supported."
+  },
+  "siteBuiltin": {
+    "message": "Supported by default"
+  },
+  "siteEnabledState": {
+    "message": "Enabled on this site"
+  },
+  "siteEnableAction": {
+    "message": "Enable on this site"
+  },
+  "siteDisableAction": {
+    "message": "Disable"
+  },
+  "siteUnsupported": {
+    "message": "Not available on this page"
   }
 }
