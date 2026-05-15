@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "Video Brightener - 動画の暗いシーンを明るく",
   "short_name": "Video Brightener",
-  "version": "0.2.0",
-  "description": "YouTube・U-NEXT・ABEMAなどの動画で暗くて見えにくいシーンを明るく補正します。フルスクリーンでも動作。",
+  "version": "0.2.1",
+  "description": "動画の暗くて見えにくいシーンを明るく補正します。フルスクリーン対応、DRM配信対応、外部通信なし。",
   "host_permissions": [
     "https://www.youtube.com/*",
     "https://www.youtube-nocookie.com/*",
